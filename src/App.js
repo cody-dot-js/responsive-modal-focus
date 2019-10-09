@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Base from "terra-base";
+import { ActiveBreakpointProvider } from "terra-breakpoints";
+import ModalManager from "terra-modal-manager";
+import Content from "./Content";
 
+/**
+ * - Base: required by all terra apps
+ * - ActiveBreakpointProvider: used to determine the active breakpoint
+ *    needs to be above the ModalManager to get the context in the modals
+ * - ModalManager: used to setup modal environment
+ */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Base locale="en">
+      <ActiveBreakpointProvider>
+        <ModalManager>
+          <Content />
+        </ModalManager>
+      </ActiveBreakpointProvider>
+    </Base>
   );
 }
 
